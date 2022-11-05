@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 
-import { NavigationContainer, Nav, NavLink, MainContainer } from "./naviagtion.styles";
+import { NavigationContainer, Nav, NavLink, MainContainer } from "./navigation.styles";
 
 const Navigation = () => {
   return (
@@ -23,7 +23,7 @@ const Navigation = () => {
             </NavLink>
           </Nav>
           <Nav>
-            <NavLink to="/sign-in">
+            <NavLink to="/auth">
                 <h2>Sign in</h2>
             </NavLink>
             <NavLink to="/cart">

@@ -16,7 +16,7 @@ export const LoginContainer = styled.div`
   }
 `;
 
-export const SignInContent = styled.div`
+export const SignUpContent = styled.div`
   margin: 0 auto;
   width: 20%;
 

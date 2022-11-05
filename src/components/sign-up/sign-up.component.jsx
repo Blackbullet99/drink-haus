@@ -1,25 +1,30 @@
 import { Fragment, useState } from "react";
-
-import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase.utils";
-import signinImage from "../../assets/signinImage.jpg";
 import {
-  SignInContent,
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase.utils";
+
+import signupImage from "../../assets/signupImage.jpg";
+import {
+  SignUpContent,
   ButtonsContainer,
   LoginContainer,
   ActionContainer,
   ActionLink,
-} from "./sign-in.styles";
+} from "./sign-up.styles";
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 const defaultFormField = {
+  displayName: "",
   email: "",
   password: "",
+  confirmPassword: "",
 };
 
-const SignInForm = () => {
+const SignUpForm = () => {
   const [formField, setFormFields] = useState(defaultFormField);
-  const { email, password } = formField;
+  const { displayName, email, password, confirmPassword } = formField;
 
   const resetFormFields = () => {
     setFormFields(defaultFormField);
@@ -28,23 +33,24 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (password !== confirmPassword) {
+      alert("password does not match");
+      return;
+    }
+
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+      
+      await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
-      switch (error.code) {
-        case "auth/wrong-password":
-          alert("incorrect password for email");
-          break;
-        case "auth/user-not-found":
-          alert("no user associated with this email");
-          break;
-        default:
-          console.log("user sign in encountered an error", error);
+      if (error.code === "auth/email/-already-in-use") {
+        alert("Email already in use");
+      } else {
+        console.log("user creation encountered an error", error);
       }
     }
   };
@@ -57,9 +63,18 @@ const SignInForm = () => {
   return (
     <Fragment>
       <LoginContainer>
-        <SignInContent>
-          <h1>Sign In</h1>
+        <SignUpContent>
+          <h1>Sign Up</h1>
           <form onSubmit={handleSubmit}>
+            <FormInput
+              label="Display Name"
+              type="text"
+              required
+              onChange={handleChange}
+              name="displayName"
+              value={displayName}
+            />
+
             <FormInput
               label="Email"
               type="email"
@@ -77,21 +92,30 @@ const SignInForm = () => {
               name="password"
               value={password}
             />
+
+            <FormInput
+              label="confirm Password"
+              type="password"
+              required
+              onChange={handleChange}
+              name="confirmPassword"
+              value={confirmPassword}
+            />
             <ButtonsContainer>
               <Button type="submit" buttonType={BUTTON_TYPE_CLASSES.base}>
-                Sign In
+                Sign Up
               </Button>
             </ButtonsContainer>
             <ActionContainer>
-              Don't have an account?
-              <ActionLink to="/sign-up">Create One</ActionLink>
+              Already have account?
+              <ActionLink to="/auth">Sign In</ActionLink>
             </ActionContainer>
           </form>
-        </SignInContent>
-        <img src={signinImage} alt="signinImage" />
+        </SignUpContent>
+        <img src={signupImage} alt="signupImage" />
       </LoginContainer>
     </Fragment>
   );
 };
 
-export default SignInForm;
+export default SignUpForm;
