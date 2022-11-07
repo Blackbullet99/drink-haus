@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+View live preview [here](https://stellular-pony-171fc2.netlify.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
