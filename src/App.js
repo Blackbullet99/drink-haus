@@ -7,19 +7,24 @@ import Store from "./components/store/store.component";
 import Cart from "./components/cart/cart.component";
 import Authentication from "./routes/authentication/authentication.component";
 import SignUpForm from "./components/sign-up/sign-up.component";
+import ErrorBoundary from "./components/error-boundary/error-boundary.component";
+import NotFound from "./components/error-page/error-page.component";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Navigation />}>
-        <Route index element={<Home />} />
-        <Route path="store" element={<Store />} />
-        <Route path="about" element={<About />} />
-        <Route path="auth" element={<Authentication />} />
-        <Route path="sign-up" element={<SignUpForm />} />
-        <Route path="cart" element={<Cart />} />
-      </Route>
-    </Routes>
+    <ErrorBoundary>
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />} />
+          <Route path="store/*" element={<Store />} />
+          <Route path="about" element={<About />} />
+          <Route path="auth" element={<Authentication />} />
+          <Route path="sign-up" element={<SignUpForm />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </ErrorBoundary>
   );
 };
 

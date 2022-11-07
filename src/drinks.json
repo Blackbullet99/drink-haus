@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "citrus flower",
+        "image": "images/citrusflower.jpg"
+    },
+    {
+        "id": 2,
+        "name": "spritz kit",
+        "image": "images/spritzkit.jpg"
+    },
+    {
+        "id": 3,
+        "name": "lemon lavender",
+        "image": "images/lemonlavender.jpg"
+    },
+    {
+        "id": 4,
+        "name": "spiced cherry",
+        "image": "images/spiceddcherryy.jpg"
+    },
+    {
+        "id": 5,
+        "name": "new fashioned",
+        "image": "images/newfashioned.jpg"
+    },
+    {
+        "id": 6,
+        "name": "grapefruit jalapeno",
+        "image": "images/jalapeno.jpg"
+    },
+    {
+        "id": 7,
+        "name": "strawberry basil",
+        "image": "images/strawberrybasil.jpg"
+    },
+    {
+        "id": 8,
+        "name": "cocktail kit",
+        "image": "images/cocktailkit.jpg"
+    },
+    {
+        "id": 9,
+        "name": "flower spices",
+        "image": "images/flowerspices.jpg"
+    },
+    {
+        "id": 10,
+        "name": "old fashioned",
+        "image": "images/oldfashioned.jpg"
+    }
+]

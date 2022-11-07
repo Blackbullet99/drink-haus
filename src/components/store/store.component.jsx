@@ -1,10 +1,16 @@
+import { Routes, Route } from "react-router-dom";
+
+import CategoryPreview from "../../routes/category-preview/category-preview.component";
+import Category from "../../routes/category/category.component";
+import NotFound from "../error-page/error-page.component";
+
 const Store = () => {
   return (
-    <div>
-      <section>
-        <h1>Store</h1>
-      </section>
-    </div>
+    <Routes>
+      <Route index element={<CategoryPreview />} />
+      <Route path=":drinkName" element={<Category />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 
