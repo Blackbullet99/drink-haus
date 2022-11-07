@@ -11,10 +11,6 @@ export const StoreContainer = styled.section`
 `;
 
 export const StoreContent = styled.div`
-  /* display: flex;
-flex-direction: column;
-align-items: center; */
-  /* margin: 0 auto; */
   margin-left: 7rem;
   margin-top: 10rem;
 `;
