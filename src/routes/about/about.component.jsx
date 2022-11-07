@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import {
   AboutContainer,
   AboutContent,
@@ -11,6 +13,7 @@ import {
 import Button, {
   BUTTON_TYPE_CLASSES,
 } from "../../components/button/button.component";
+import Footer from "../../components/footer/footer.component";
 
 import easyToDrink from "../../assets/easytodrink.jpg";
 import aboutSubImage from "../../assets/aboutsubimage.jpg";
@@ -20,7 +23,7 @@ import shopPreview from "../../assets/shoppreview.jpg";
 
 const About = () => {
   return (
-    <div>
+    <Fragment>
       <AboutContainer>
         <AboutContent>
           <AboutHeroSection>
@@ -70,7 +73,8 @@ const About = () => {
           </AboutBottomSection>
         </AboutContent>
       </AboutContainer>
-    </div>
+      <Footer />
+    </Fragment>
   );
 };
 

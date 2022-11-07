@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Button, {
   BUTTON_TYPE_CLASSES,
 } from "../../components/button/button.component";
+import Footer from "../../components/footer/footer.component";
 
 import {
   HeroConatiner,
@@ -43,6 +44,7 @@ const Home = () => {
           </div>
         </HeroContent>
       </HeroConatiner>
+      <Footer />
     </div>
   );
 };
